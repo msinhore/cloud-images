@@ -1,0 +1,11 @@
+# An Ansible playbook that configures a CloudStack image
+---
+- name: AlmaLinux CloudStack
+  hosts: default
+  become: true
+
+  roles:
+    - role: unified_boot
+      when: is_unified_boot is defined
+    - cloudstack_guest
+    - cleanup_vm
